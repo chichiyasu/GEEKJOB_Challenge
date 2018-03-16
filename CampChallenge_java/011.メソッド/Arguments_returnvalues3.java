@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author inagakiyuuichi
  */
-public class Arguments_returnvaliues2 extends HttpServlet {
+public class Arguments_returnvalues3 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,28 +27,36 @@ public class Arguments_returnvaliues2 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    String[] profile(String st) {
-
-        String[] human1 = {"1", "1991.1.2", "tokyo"};
-        String[] human2 = {"2", "1991.3.4", "kanagawa"};
-        String[] human3 = {"3", "1991.5.6", null};
-
-        if (st.equals(human1[0])) {
-
-            return human1;
-
-        } else if (st.equals(human2[0])) {
-
-            return human2;
-        } else if (st.equals(human3[0])) {
-
-            return human3;
-
-        }
-        return null;
-
+    
+    
+   String[] profile(String st){
+        
+      String[] human1 = {"1", "1991.1.2", "tokyo"};
+      String[] human2 = {"2", "1991.3.4", "kanagawa"};
+      String[] human3 = {"3", "1991.5.6", null}; 
+      
+      
+      if(st.equals(human1[0])){
+          
+          return human1;    
+      }
+      else if(st.equals(human2[0])) {
+          
+           return human2;
+           
+      }
+      else if(st.equals(human3[0]))  {
+          
+           return human3;
+           
+      }
+       return null;
+       
+       
+       
     }
-
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,34 +65,38 @@ public class Arguments_returnvaliues2 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Arguments_returnvaliues2</title>");
+            out.println("<title>Servlet Arguments_returnvalues3</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Arguments_returnvaliues2 at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Arguments_returnvalues3 at " + request.getContextPath() + "</h1>");
+            
+           int limit=2;
+           
+        for(int i=1;i<=limit;i++){
+            
+           
+           
+           String[] data1 = profile(String.valueOf(i));
 
-            for (int i = 1; i <= 3; i++) {
+            for (int num1 = 0; num1<data1.length; num1++) {
 
-                String[] data1 = profile(String.valueOf(i));
+                out.print(data1[num1] + "<br>");
+                
 
-                for (int num1 = 0; num1 < data1.length; num1++) {
-
-                  if (data1[num1] == null) {
-                        
-                        continue;
-
-                    }   
-                    
-                    out.print(data1[num1] + "<br>");
-
-                   
-
-                }
             }
-
+            
+           
+        }
+        
+            
+            
             out.println("</body>");
             out.println("</html>");
-
         }
+           
+            
+            
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
